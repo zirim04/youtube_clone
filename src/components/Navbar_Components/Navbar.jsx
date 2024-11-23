@@ -2,6 +2,7 @@ import React from "react";
 import YoutubeImage from "./YoutubeImage";
 import { RxHamburgerMenu } from "react-icons/rx";
 import SearchBar from "./SearchBar";
+import ReactHooks from "../ReactHooks";
 
 const Navbar = () => {
   return (
@@ -19,6 +20,6 @@ const Navbar = () => {
       </div>
     </div>
   );
-};
+}; 
 
 export default Navbar;
