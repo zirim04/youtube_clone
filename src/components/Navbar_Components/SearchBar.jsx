@@ -4,6 +4,7 @@ import React from "react";
 import { CiSearch } from "react-icons/ci";
 import { searchVideos } from "@/utils/fetchData";
 import { useState } from "react";
+import Image from "next/image";
 
 const SearchBar = () => {
   const [loading, setLoading] = useState(false);
@@ -15,7 +16,7 @@ const SearchBar = () => {
     setLoading(true);
 
     const data = await searchVideos(`search/?query=${query}`);
-    setResult(data);
+    setResult(data.videos);
     console.log(data);
     setLoading(false);
   };
@@ -35,6 +36,20 @@ const SearchBar = () => {
       </form>
 
       {loading ? <p>Loading...</p> : null}
+
+      {
+        result.map((a,b) => 
+          (
+            <div key={b}>
+              <img src={a.thumbnails[0].url} alt="" height={200} width={400} />
+              <h1 className="font-bold">{a.author}</h1>
+              <p>{a.video_length}</p>
+              <p>{a.number_of_views}</p>
+              </div>
+          )
+        )
+      }
+
     </div>
   );
 };
